@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Library</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>📚 Community Library</h1>
+  <p>A legacy C++ library database hosted on a Node.js server.</p>
+
+  <form id="libraryForm">
+    <h2>Insert a Book</h2>
+    <input name="title" placeholder="Title" required />
+    <input name="author" placeholder="Author" required />
+    <select name="NF_F">
+      <option>Fiction</option>
+      <option>Non-Fiction</option>
+    </select>
+    <select name="genre">
+      <option>Mystery</option>
+      <option>Science</option>
+      <option>Fantasy</option>
+      <option>Romance</option>
+      <option>History</option>
+      <option>Dystopian</option>
+      <option>Comedy</option>
+      <option>Horror</option>
+      <option>Biography</option>
+      <option>Adventure</option>
+    </select>
+    <select name="type">
+      <option>Novel</option>
+      <option>Textbook</option>
+      <option>Poetry</option>
+      <option>Essay</option>
+      <option>Short Story</option>
+    </select>
+    <input name="length" type="number" placeholder="Page count" required />
+    <button type="submit">Insert Book</button>
+  </form>
+
+  <form id="suggestionForm">
+    <h2>Get a Suggestion</h2>
+    <select name="NF_F">
+      <option value="1">Fiction</option>
+      <option value="2">Non-Fiction</option>
+    </select>
+    <select name="genre">
+      <option value="0">Mystery</option>
+      <option value="1">Science</option>
+      <option value="2">Fantasy</option>
+      <option value="3">Romance</option>
+      <option value="4">History</option>
+      <option value="5">Dystopian</option>
+      <option value="6">Comedy</option>
+      <option value="7">Horror</option>
+      <option value="8">Biography</option>
+      <option value="9">Adventure</option>
+    </select>
+    <select name="type">
+      <option value="0">Novel</option>
+      <option value="1">Textbook</option>
+      <option value="2">Poetry</option>
+      <option value="3">Essay</option>
+      <option value="4">Short Story</option>
+    </select>
+    <input name="length" type="number" placeholder="Page count" required />
+    <button type="submit">Get Suggestion</button>
+  </form>
+
+  <pre id="outputBox"></pre>
+
+  <script>
+    const output = document.getElementById("outputBox");
+
+    document.getElementById("libraryForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch("/insert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      output.textContent = await res.text();
+    });
+
+    document.getElementById("suggestionForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch("/suggest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      output.textContent = await res.text();
+    });
+  </script>
+</body>
+</html>
