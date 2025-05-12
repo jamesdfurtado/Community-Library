@@ -1,3 +1,0 @@
-C:/Users/arman/OneDrive/Documents/GitHub/CSC-212-Project/cmake-build-debug/CMakeFiles/CSC-212-Project.dir
-C:/Users/arman/OneDrive/Documents/GitHub/CSC-212-Project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/arman/OneDrive/Documents/GitHub/CSC-212-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
