@@ -1,5 +1,8 @@
 # Community Library 📚
 
+Final project for Data Structures & Algorithms class
+
+
 A C++ terminal program turned web app using Node.js and HTML/CSS.
 
 This program uses left-leaning red-black binary search trees to simulate an organized "virtual library" of books.
